@@ -20,3 +20,17 @@ Our findings show that static detectors fail under moderate drift, retraining do
   note={Independent undergraduate research},
   url={https://github.com/Unimportant-Cargo/drift-anomaly-benchmark}
 }
+To reproduce the multi-unit results used in the JURI revision:
+from pathlib import Path
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt  # or requirements-lock.txt
+git checkout feat/multi-unit-juri-revision
+# CLI variant:
+python main.py --unit 2 --save_dir results/juri_revision/unit_2
+python main.py --unit 3 --save_dir results/juri_revision/unit_3
+# Or run the Colab multi-unit helper:
+python scripts/run_units.py
+# Optional figure:
+# python scripts/plot_adwin_timeline.py
